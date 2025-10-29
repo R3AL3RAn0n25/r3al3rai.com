@@ -2,7 +2,7 @@ import os
 from datetime import timedelta
 
 class ProductionConfig:
-    """Production configuration for AWS deployment"""
+    """Production configuration"""
     
     # Security
     SECRET_KEY = os.environ.get("SECRET_KEY", os.urandom(32).hex())
@@ -10,9 +10,6 @@ class ProductionConfig:
     
     # Database - Use absolute path for production
     DATABASE_PATH = os.environ.get("DATABASE_PATH", "/opt/r3aler-ai/data/realer_ai.db")
-    
-    # MongoDB (if using)
-    MONGO_URI = os.environ.get("MONGO_URI", "")
     
     # Application Settings
     ADAPTATION_COOLDOWN = 60
