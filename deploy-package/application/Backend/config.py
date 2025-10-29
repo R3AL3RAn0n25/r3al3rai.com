@@ -8,11 +8,21 @@ class AppConfig:
     Best practice is to load sensitive data from environment variables.
     """
     
-    # Get the value from an environment variable, or use a default if it's not set.
-    SECRET_KEY = os.environ.get("SECRET_KEY", "wDy6mj6C8jCZHcxNdKG1GzgGvNoqmtxDdqlJmiLFmQ4")
-    ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "RZ28SlGU7rTQfz9wE5aCNA")
-    DATABASE_PATH = os.environ.get("DATABASE_PATH", os.path.join(os.path.dirname(__file__), "..", "..", "data", "realer_ai.db"))
-    MONGO_URI = os.environ.get("MONGO_URI", "mongodb+srv://AKIAYMMREDMT2HP6MQ6O:kS%2Fjb0I0dEW2fQHlsMgVYYvq79GsSmMM3XZ9tznQ@cluster0.6h0w6hw.mongodb.net/")
+    # Load sensitive values from environment variables. Do NOT commit secrets into source.
+    SECRET_KEY = os.environ.get("SECRET_KEY")
+    if not SECRET_KEY:
+        raise RuntimeError("SECRET_KEY environment variable is not set. Set it in your .env or environment.")
+
+    ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD")
+    if not ADMIN_PASSWORD:
+        raise RuntimeError("ADMIN_PASSWORD environment variable is not set. Set it in your .env or environment.")
+
+    DATABASE_PATH = os.environ.get("DATABASE_PATH",
+                                 os.path.join(os.path.dirname(__file__), "..", "..", "data", "realer_ai.db"))
+
+    MONGO_URI = os.environ.get("MONGO_URI")
+    if not MONGO_URI:
+        raise RuntimeError("MONGO_URI environment variable is not set. Set it in your .env or environment.")
 
     # Application Settings that are not sensitive
     ADAPTATION_COOLDOWN = 60
