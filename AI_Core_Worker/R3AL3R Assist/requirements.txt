@@ -1,0 +1,10 @@
+# R3AL3RAI — FINAL WORKING requirements.txt (December 2025)
+openai-whisper==20240930
+edge-tts==6.1.12
+numpy==2.1.2
+pyaudio
+webrtcvad
+pydub
+nemo_toolkit[asr]
+soundfile
+# PyAudio is the only one that needs a pre-compiled wheel

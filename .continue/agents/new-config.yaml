@@ -1,0 +1,12 @@
+# This is the configuration file for the Continue extension in YAML format
+# See https://continue.dev/docs/customization for more info
+
+models:
+  - title: R3ÆLƎR
+    model: r3al3r-2025
+    provider: openai-like
+    api_base: http://127.0.0.1:5272/v1
+    api_key: "unused"
+
+# This line makes R3ÆLƎR your main AI assistant
+default_model: r3al3r-2025

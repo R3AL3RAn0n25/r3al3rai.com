@@ -1,0 +1,9 @@
+*.json filter=lfs diff=lfs merge=lfs -text
+*.pdf filter=lfs diff=lfs merge=lfs -text
+*.tar.gz filter=lfs diff=lfs merge=lfs -text
+*.zip filter=lfs diff=lfs merge=lfs -text
+backup-2025-11-08-142615/exoplanets_raw.json filter=lfs diff=lfs merge=lfs -text
+backup-2025-11-08-142615/space_astro_ALL_knowledge_base.json filter=lfs diff=lfs merge=lfs -text
+R3ALER_AI_MASTER_PRESENTATION_EMBEDDED_FINAL.pdf filter=lfs diff=lfs merge=lfs -text
+backup-2025-11-08-143747-pre-storage-facility/exoplanets_raw.json filter=lfs diff=lfs merge=lfs -text
+backup-2025-11-08-143747-pre-storage-facility/space_astro_ALL_knowledge_base.json filter=lfs diff=lfs merge=lfs -text

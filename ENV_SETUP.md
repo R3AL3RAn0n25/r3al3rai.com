@@ -24,7 +24,7 @@ Example `.env` file:
 ```
 SECRET_KEY=your_generated_secret_key
 ADMIN_PASSWORD=your_strong_password
-MONGO_URI=mongodb+srv://username:password@your-cluster-url
+MONGO_URI=mongodb+srv://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}
 ```
 
 ## Security Notes

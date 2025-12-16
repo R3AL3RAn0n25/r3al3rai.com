@@ -1,0 +1,2 @@
+# Fix PM2 startup in WSL
+wsl -e bash -c "export PATH='/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin' && sudo env PATH=`$PATH:/usr/bin /usr/lib/node_modules/pm2/bin/pm2 startup systemd -u r3al3ran0n24 --hp /home/r3al3ran0n24"

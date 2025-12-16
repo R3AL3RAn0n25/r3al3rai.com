@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -d '{"wallet_path":"/test/wallet.dat"}' http://localhost:3002/api/bitxtractor/start

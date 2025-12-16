@@ -4,12 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R3ÆLƎR AI - Live System Demonstration</title>
+        <div style="margin:16px 0;">
+            <button id="rvn-button" style="padding:10px 16px; border-radius:8px; background:#00d4ff; color:#000; border:none; cursor:pointer;">
+                Open RVN
+            </button>
+            <span id="rvn-status" style="margin-left:8px; color:#ccc; font-size:0.9em;"></span>
+        </div>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
+
+    <script>
+    (function(){
+        // Read RVN_URL from environment if injected or from global
+        var rvnUrl = window.RVN_URL || (typeof RVN_URL !== 'undefined' ? RVN_URL : '');
+        var btn = document.getElementById('rvn-button');
+        var status = document.getElementById('rvn-status');
+        if (!btn) return;
+        if (rvnUrl) {
+            status.textContent = 'RVN available';
+            btn.title = 'Open RVN at ' + rvnUrl;
+            btn.onclick = function(){ window.open(rvnUrl, '_blank'); };
+        } else {
+            status.textContent = 'RVN URL not configured';
+            btn.onclick = function(){ alert('RVN URL not configured. Set environment variable RVN_URL.'); };
+        }
+    })();
+    </script>
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

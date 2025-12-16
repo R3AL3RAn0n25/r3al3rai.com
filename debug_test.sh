@@ -1,0 +1,1 @@
+curl -v "http://localhost:3000/bitxtractor?wallet_path=/test/wallet.dat&currency=BTC"

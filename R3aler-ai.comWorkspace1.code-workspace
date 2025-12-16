@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "Management System"
+		}
+	],
+	"settings": {
+		"powershell.cwd": "Management System",
+		"workbench.editor.customLabels.patterns": {
+			"@workspace": ""
+		},
+		"stripe.enableCodebaseIndexing": true
+	}
+}

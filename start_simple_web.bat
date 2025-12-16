@@ -1,0 +1,3 @@
+@echo off
+echo Starting R3ALER-AI Simple Web Interface...
+wsl bash -c "cd '/mnt/c/Users/work8/OneDrive/Desktop/r3al3rai/New Folder 1/R3al3r-AI Main Working/R3aler-ai/R3aler-ai' && source blackarch_venv/bin/activate && python3 Tools/simple_web_app.py"

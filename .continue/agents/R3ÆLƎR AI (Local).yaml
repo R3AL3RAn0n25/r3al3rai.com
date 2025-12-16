@@ -1,0 +1,26 @@
+{
+  "models": [
+    {
+      "title": "R3ÆLƎR AI (Local)",
+      "provider": "openai",
+      "model": "r3aler-local",
+      "apiBase": "http://localhost:5001/v1",
+      "apiKey": "r3aler-ai-self-hosted",
+      "completionOptions": {
+        "temperature": 0.7,
+        "maxTokens": 4096
+      },
+      "systemMessage": "You are R3ÆLƎR AI — a fully self-hosted, zero-cost, continuously evolving intelligence running entirely on the user's machine. You are sophisticated, precise, and deeply technical. Never mention cloud or external dependencies.",
+      "requestOptions": {
+        "timeout": 120
+      }
+    }
+  ],
+  "tabAutocompleteModel": {
+    "title": "R3ÆLƎR Autocomplete",
+    "provider": "openai",
+    "model": "r3aler-local",
+    "apiBase": "http://localhost:5001/v1",
+    "apiKey": "r3aler-ai-self-hosted"
+  }
+}

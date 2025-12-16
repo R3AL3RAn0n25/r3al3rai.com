@@ -1,0 +1,5 @@
+# This directory is a Syncthing folder marker.
+# Do not delete.
+
+folderID: shqko-jeggp
+created: 2025-11-19T20:44:51-06:00

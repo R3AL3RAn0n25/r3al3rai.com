@@ -1,0 +1,1 @@
+curl -X POST -H "Content-Type: application/json" -d '{"wallet_path":"C:\\Users\\work8\\OneDrive\\Desktop\\1.21.dat","mode":"dry","kdf":"pbkdf2","pbkdf2_hash":"sha256","cipher":"aes-256-cbc"}' http://localhost:3002/api/bitxtractor/start

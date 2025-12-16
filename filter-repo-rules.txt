@@ -1,0 +1,10 @@
+regex:(password|secret|key|token|credential|api[_\s]?key|private[_\s]?key)\s*=\s*['"]\w+['"]
+regex:mongodb\+srv://[^@]+@[^"'\s]+
+regex:BEGIN\s+(RSA\s+)?PRIVATE\s+KEY[^-]+-
+regex:['"](sk|pk)_(test|live)_[0-9a-zA-Z]{24,99}['"]
+regex:r3aler_jwt_secret_key_2025
+regex:testpass123
+regex:AKIAYMMREDMT2HP6MQ6O
+regex:kS%2Fjb0I0dEW2fQHlsMgVYYvq79GsSmMM3XZ9tznQ
+regex:wDy6mj6C8jCZHcxNdKG1GzgGvNoqmtxDdqlJmiLFmQ4
+regex:RZ28SlGU7rTQfz9wE5aCNA

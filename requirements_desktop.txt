@@ -1,0 +1,14 @@
+# R3ÆLƎR Desktop Application Requirements
+# Install with: pip install -r requirements_desktop.txt
+
+# GUI Framework
+tk>=8.6
+
+# Database
+psycopg2-binary>=2.9.0
+
+# HTTP requests
+requests>=2.25.0
+
+# Additional utilities
+Pillow>=8.0.0  # For image handling if needed

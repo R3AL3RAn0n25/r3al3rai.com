@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R3ÆLƎR AI Live Demo - CodePen Version</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .demo-section {
+            padding: 30px;
+        }
+
+        .workflow-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .step {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid #e9ecef;
+            transition: all 0.3s ease;
+        }
+
+        .step:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .step-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            font-weight: bold;
+            font-size: 1.2em;
+            line-height: 40px;
+            margin-bottom: 15px;
+        }
+
+        .step h3 {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        .step p {
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+
+        .controls {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .run-demo-btn {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 107, 0.3);
+        }
+
+        .run-demo-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 107, 0.4);
+        }
+
+        .run-demo-btn:active {
+            transform: translateY(0);
+        }
+
+        .output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            border-radius: 10px;
+            padding: 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 400px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            line-height: 1.4;
+        }
+
+        .output-header {
+            background: #2d2d2d;
+            padding: 10px 20px;
+            border-radius: 10px 10px 0 0;
+            font-weight: bold;
+            color: #61dafb;
+        }
+
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .metric {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            border: 1px solid #e9ecef;
+        }
+
+        .metric h4 {
+            color: #495057;
+            margin-bottom: 10px;
+        }
+
+        .metric .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-online {
+            background: #28a745;
+        }
+
+        .status-offline {
+            background: #dc3545;
+        }
+
+        .footer {
+            background: #343a40;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        .footer a {
+            color: #61dafb;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .step, .metric {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>R3ÆLƎR AI Live Demo</h1>
+            <p>Experience the future of adaptive AI - Real-time personalization in action</p>
+        </div>
+
+        <div class="demo-section">
+            <div class="workflow-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>User Query</h3>
+                    <p>AI receives and analyzes user input in real-time</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Droid Adapts</h3>
+                    <p>Personalization engine adjusts based on user behavior</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Evolution Detects</h3>
+                    <p>Gap detection identifies optimization opportunities</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <h3>Auto-Optimizes</h3>
+                    <p>System automatically improves performance</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <h3>Personalized Response</h3>
+                    <p>Delivers tailored, optimized AI response</p>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button class="run-demo-btn" onclick="runDemo()">Run Live Demo</button>
+            </div>
+
+            <div class="output-header">
+                <span class="status-indicator status-offline"></span>
+                Live Demo Output
+            </div>
+            <div class="output" id="demo-output">
+                Click "Run Live Demo" to see R3ÆLƎR AI in action...
+            </div>
+
+            <div class="metrics">
+                <div class="metric">
+                    <h4>Response Time</h4>
+                    <div class="value" id="response-time">-- ms</div>
+                </div>
+                <div class="metric">
+                    <h4>Personalization Score</h4>
+                    <div class="value" id="personalization-score">--%</div>
+                </div>
+                <div class="metric">
+                    <h4>Knowledge Base Hits</h4>
+                    <div class="value" id="kb-hits">--</div>
+                </div>
+                <div class="metric">
+                    <h4>Optimization Cycles</h4>
+                    <div class="value" id="optimization-cycles">--</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Built with ❤️ by R3ÆLƎR AI | <a href="https://github.com/r3aler-ai" target="_blank">View on GitHub</a></p>
+        </div>
+    </div>
+
+    <script>
+        class R3alerAIDemo {
+            constructor() {
+                this.output = document.getElementById('demo-output');
+                this.responseTimeEl = document.getElementById('response-time');
+                this.personalizationEl = document.getElementById('personalization-score');
+                this.kbHitsEl = document.getElementById('kb-hits');
+                this.optimizationEl = document.getElementById('optimization-cycles');
+                this.statusIndicator = document.querySelector('.status-indicator');
+            }
+
+            log(message) {
+                const timestamp = new Date().toLocaleTimeString();
+                this.output.textContent += `[${timestamp}] ${message}\n`;
+                this.output.scrollTop = this.output.scrollHeight;
+            }
+
+            async runDemo() {
+                this.log('🚀 Initializing R3ÆLƎR AI Demo...');
+                this.statusIndicator.className = 'status-indicator status-online';
+
+                // Step 1: User Query
+                this.log('📝 Step 1: Processing user query...');
+                await this.delay(1000);
+                const query = "How can AI help with quantum computing research?";
+                this.log(`User Query: "${query}"`);
+
+                // Step 2: Droid Adapts
+                this.log('🤖 Step 2: Droid analyzing user behavior patterns...');
+                await this.delay(1500);
+                this.log('   - Detected research interest in quantum computing');
+                this.log('   - User prefers technical depth over simplification');
+                this.log('   - Previous interactions show advanced math background');
+
+                // Step 3: Evolution Detects
+                this.log('🔍 Step 3: Evolution Engine scanning for knowledge gaps...');
+                await this.delay(1200);
+                this.log('   - Gap detected: Limited quantum algorithm examples');
+                this.log('   - Gap detected: Missing recent quantum hardware benchmarks');
+                this.log('   - Optimization opportunity: Enhance quantum knowledge base');
+
+                // Step 4: Auto-Optimizes
+                this.log('⚡ Step 4: Auto-optimization in progress...');
+                await this.delay(1800);
+                this.log('   - Retrieving quantum computing datasets...');
+                this.log('   - Updating knowledge base with latest research...');
+                this.log('   - Optimizing response algorithms for technical accuracy...');
+
+                // Step 5: Personalized Response
+                this.log('🎯 Step 5: Generating personalized response...');
+                await this.delay(2000);
+
+                const response = `Based on your research interests in quantum computing and your preference for technical depth, here's a comprehensive overview:
+
+**Quantum Computing Fundamentals:**
+- Quantum bits (qubits) utilize superposition and entanglement
+- Current hardware: IBM Quantum (127 qubits), Google Sycamore (53 qubits)
+- Key algorithms: Shor's algorithm (factoring), Grover's algorithm (search)
+
+**AI Applications in Quantum Research:**
+1. **Quantum Circuit Optimization**: AI can design more efficient quantum circuits
+2. **Error Correction**: Machine learning models predict and correct quantum errors
+3. **Algorithm Discovery**: Neural networks help discover new quantum algorithms
+4. **Hardware Characterization**: AI analyzes quantum device performance
+
+**Current Research Opportunities:**
+- Hybrid quantum-classical algorithms
+- Quantum machine learning implementations
+- NISQ (Noisy Intermediate-Scale Quantum) device optimization
+
+Would you like me to dive deeper into any of these areas?`;
+
+                this.log('Response generated successfully!');
+                this.log('--- FINAL RESPONSE ---');
+                this.log(response);
+
+                // Update metrics
+                this.updateMetrics();
+
+                this.log('✅ Demo completed successfully!');
+                this.statusIndicator.className = 'status-indicator status-offline';
+            }
+
+            updateMetrics() {
+                // Simulate realistic metrics
+                const responseTime = Math.floor(Math.random() * 500) + 200;
+                const personalizationScore = Math.floor(Math.random() * 20) + 80;
+                const kbHits = Math.floor(Math.random() * 15) + 5;
+                const optimizationCycles = Math.floor(Math.random() * 8) + 3;
+
+                this.responseTimeEl.textContent = `${responseTime} ms`;
+                this.personalizationEl.textContent = `${personalizationScore}%`;
+                this.kbHitsEl.textContent = kbHits;
+                this.optimizationEl.textContent = optimizationCycles;
+            }
+
+            delay(ms) {
+                return new Promise(resolve => setTimeout(resolve, ms));
+            }
+        }
+
+        const demo = new R3alerAIDemo();
+
+        function runDemo() {
+            const btn = document.querySelector('.run-demo-btn');
+            btn.disabled = true;
+            btn.textContent = 'Running Demo...';
+
+            demo.runDemo().finally(() => {
+                btn.disabled = false;
+                btn.textContent = 'Run Live Demo';
+            });
+        }
+
+        // Initialize demo on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            demo.log('R3ÆLƎR AI Demo initialized. Click "Run Live Demo" to begin.');
+        });
+    </script>
+</body>
+</html>

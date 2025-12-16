@@ -24,7 +24,7 @@ class OpenAIIntegration:
             
             # Add conversation history
             if conversation_history:
-                for msg in conversation_history[-5:]:  # Last 5 messages for context
+                for msg in conversation_history[-20:]:  # Last 20 messages for context
                     messages.append({"role": "user", "content": msg.get("user", "")})
                     messages.append({"role": "assistant", "content": msg.get("ai", "")})
             
